@@ -11,21 +11,15 @@
             </div>
             <div class="form-group">
                 <label>Author: </label>
-                <select class="form-control" v-model="book.author" id="author">
-                <option v-for="author in authors" :key="author">{{ author }}</option>
-                </select>
+                <input class="form-control" v-model="book.author"  placeholder="Book Author"/>
             </div>
             <div class="form-group">
                 <label>Publisher: </label>
-                <select class="form-control" v-model="book.publisher" id="publisher">
-                <option v-for="publisher in publishers" :key="publisher">{{ publisher }}</option>
-                </select>
+                <input class="form-control" v-model="book.publisher" placeholder="Book Publisher"/>
             </div>
             <div class="form-group">
                 <label>Genre: </label>
-                <select class="form-control"  v-model="book.genre" id="genre">
-                <option v-for="genre in genres" :key="genre">{{ genre }}</option>
-                </select>
+                <input class="form-control"  v-model="book.genre"  placeholder="Book Genre"/>
             </div>
             <div class="form-group"><br/>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -49,7 +43,7 @@
         },
         
         setup(props){
-            const {errors, authors, publishers, genres, book, getBook, updateBook} = useBooks()
+            const {errors, book, getBook, updateBook} = useBooks()
 
             onMounted(() => getBook(props.id))
 
@@ -59,9 +53,6 @@
 
             return{
                 errors, 
-                authors, 
-                publishers, 
-                genres, 
                 book,
                 editBook
             }

@@ -8,11 +8,6 @@ export default function useBooks(){
     const errors = ref('')
     const router = useRouter()
 
-    const authors = ['Author A', 'Author B', 'Author C'];
-    const genres = ['Fiction', 'Romantic', 'Thriller'];
-    const publishers = ['Pub A', 'Pub B', 'Pub C'];
-
-
     const getBooks = async () => {
         const response = await axios.get('http://localhost:8000/api/books/');
         books.value = response.data.data;
@@ -61,9 +56,6 @@ export default function useBooks(){
 
     return{
         errors,
-        authors,
-        publishers,
-        genres,
         books,
         book,
         getBook,

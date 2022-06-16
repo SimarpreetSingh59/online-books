@@ -3,29 +3,23 @@
         <form @submit.prevent="saveBook">
             <div class="form-group">
                 <label>Title: </label>
-                <input type="text" class="form-control" placeholder="book title" v-model="form.title">
+                <input type="text" class="form-control" placeholder="Book Title" v-model="form.title">
             </div>
             <div class="form-group">
                 <label>Year: </label>
-                <input type="text" class="form-control" placeholder="book year" v-model="form.year">
+                <input type="text" class="form-control" placeholder="Book year" v-model="form.year">
             </div>
             <div class="form-group">
                 <label>Author: </label>
-                <select class="form-control" v-model="form.author">
-                <option v-for="author in authors" :key="author">{{ author }}</option>
-                </select>
+                <input class="form-control" v-model="form.author"  placeholder="Book Author"/>
             </div>
             <div class="form-group">
                 <label>Publisher: </label>
-                <select class="form-control" v-model="form.publisher">
-                <option v-for="publisher in publishers" :key="publisher">{{ publisher }}</option>
-                </select>
+                <input class="form-control" v-model="form.publisher" placeholder="Book Publisher"/>
             </div>
             <div class="form-group">
                 <label>Genre: </label>
-                <select class="form-control"  v-model="form.genre">
-                <option v-for="genre in genres" :key="genre">{{ genre }}</option>
-                </select>
+                <input class="form-control"  v-model="form.genre"  placeholder="Book Genre"/>
             </div>
             <div class="form-group"><br/>
                 <button :disabled="!submittable" type="submit" class="btn btn-primary">Save</button>
@@ -41,7 +35,7 @@
 
     export default {
         setup(){
-            const {errors, storeBook, authors, publishers, genres} = useBooks()
+            const {errors, storeBook} = useBooks()
 
             const form = reactive({
                 title: '',
@@ -65,9 +59,6 @@
                 form,
                 errors,
                 saveBook,
-                authors,
-                publishers,
-                genres,
                 submittable
             }
 

@@ -1,5 +1,10 @@
 <template>
    <div class="container">
+       <div class="row">
+            <router-link :to="{name: 'home'}" class="text-sm font-medium nav-link">
+                <button class="btn btn-primary">Back</button>
+            </router-link>
+        </div>
        <div>
             <h2 class="card-subtitle mb-2 text-muted">{{ book.title}}</h2>
             <h6 class="card-subtitle mb-2 text-muted">year: {{ book.year}}</h6>

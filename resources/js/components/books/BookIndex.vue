@@ -16,7 +16,7 @@
                 </div>
             </router-link>
             <div>
-                    <router-link id="editBtn" :to="{name: 'books.edit', params: {id: `${book.id}`}}" >Edit</router-link>&nbsp;
+                    <router-link id="editBtn" :to="{name: 'books.edit', params: {id: book.id}}" >Edit</router-link>&nbsp;
                     <a href="#" id="deleteBtn" @click="removeBook(book)" role="button">Delete</a>&nbsp;
             </div>
 

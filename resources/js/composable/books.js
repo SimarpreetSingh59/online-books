@@ -53,13 +53,11 @@ export default function useBooks(){
         }
     }
 
-    const removeBook = async (id) => {
-        await axios.delete(`http://localhost:8000/api/books` , {
-            params: {
-                id: id
-            }
-        })
-        await router.push({name: 'home'})
+    const removeBook = async (book) => {
+
+        await axios.delete(`http://localhost:8000/api/books/${book.id}`)
+        
+        await router.go()
     }
 
     return{

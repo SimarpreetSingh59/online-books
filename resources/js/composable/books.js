@@ -14,7 +14,7 @@ export default function useBooks(){
 
 
     const getBooks = async () => {
-        const response = await axios.get('http://localhost:8000/api/books');
+        const response = await axios.get('http://localhost:8000/api/books/');
         books.value = response.data.data;
     }
 
@@ -39,6 +39,29 @@ export default function useBooks(){
         }
     }
 
+    const updateBook = async (id) => {
+        errors.value=''
+        try{
+
+            await axios.put('http://localhost:8000/api/books' + id, book.value)
+            await router.push({name: 'home'})
+
+        }catch(e){
+            if(e.response.status === 422){
+                errors.value = e.response.data.errors
+            }
+        }
+    }
+
+    const removeBook = async (id) => {
+        await axios.delete(`http://localhost:8000/api/books` , {
+            params: {
+                id: id
+            }
+        })
+        await router.push({name: 'home'})
+    }
+
     return{
         errors,
         authors,
@@ -48,6 +71,8 @@ export default function useBooks(){
         book,
         getBook,
         getBooks,
-        storeBook
+        storeBook,
+        updateBook,
+        removeBook
     }
 }

@@ -15,6 +15,11 @@
                     <h6 class="card-subtitle mb-2 text-muted text-center">Genre: {{ book.genre}}</h6>
                 </div>
             </router-link>
+            <div>
+                    <router-link id="editBtn" :to="{name: 'books.edit', params: {id: `${book.id}`}}" >Edit</router-link>&nbsp;
+                    <a href="#" id="deleteBtn" @click="removeBook(book)" role="button">Delete</a>&nbsp;
+            </div>
+
         </div>
     </div>
 </template>
@@ -25,11 +30,12 @@
 
     export default{
         setup(){
-            const {books, getBooks} = useBooks()
+            const {books, getBooks, removeBook} = useBooks()
             onMounted(getBooks)
 
             return {
-                books
+                books,
+                removeBook
             }
         }
     }

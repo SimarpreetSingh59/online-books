@@ -28,8 +28,6 @@ export default function useBooks(){
         try{
             const res = await axios.post('http://localhost:8000/api/books', data)
 
-            console.log(res)
-
             await router.push({name: 'home'})
 
         }catch(e){
@@ -41,9 +39,10 @@ export default function useBooks(){
 
     const updateBook = async (id) => {
         errors.value=''
+        console.log(id)
         try{
 
-            await axios.put('http://localhost:8000/api/books' + id, book.value)
+            await axios.put('http://localhost:8000/api/books/' + id, book.value)
             await router.push({name: 'home'})
 
         }catch(e){
